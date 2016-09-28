@@ -133,5 +133,47 @@
   </dependencies>
   <build>
     <finalName>abins</finalName>
+    <plugins>
+     	<plugin>  
+	     <groupId>org.apache.maven.plugins</groupId>  
+		    <artifactId>maven-compiler-plugin</artifactId>  
+		    <version>2.3.1</version>  
+		    <configuration>  
+		         <source>1.6</source>  
+		        <target>1.6</target>  
+		        <encoding>utf8</encoding>    
+		     </configuration>  
+		 </plugin>
+		 
+		 <plugin>
+		 	<groupId>org.codehaus.cargo</groupId>
+		 	<artifactId>cargo-maven2-plugin</artifactId>
+		 	<version>1.2.3</version>
+		 	<configuration>
+		 		<container>
+		 			<containerId>tomcat6x</containerId>
+		 			<home>F:\apache-tomcat-6.0.45</home>
+		 		</container>
+		 		<configuration>
+		 			<type>existing</type>
+		 			<home>F:\apache-tomcat-6.0.45</home>
+		 			<properties>
+		 				<cargo.servlet.port>8080</cargo.servlet.port>
+		 			</properties>
+		 		</configuration>
+		 	</configuration>
+		 	
+		 	<executions>
+		 		<execution>
+		 			<id>cargo-run</id>
+		 			<phase>install</phase>
+		 			<goals>
+		 				<goal>run</goal>
+		 			</goals>
+		 		</execution>
+		 	</executions>
+		 	
+		 </plugin>
+     </plugins>
   </build>
 </project>
