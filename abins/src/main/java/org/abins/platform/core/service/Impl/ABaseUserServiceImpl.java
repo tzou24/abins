@@ -26,8 +26,10 @@ public class ABaseUserServiceImpl implements ABaseUserService {
     
     @Override
     public ABaseUser login(String login, String password)
-        throws AUserLoginException {
-        String md5Password = MD5Util.getInstance().getMD5ofStr(password);
+        throws AUserLoginException, Exception {
+        logger.info("loginParams={}", login, password);
+        MD5Util md5 = new MD5Util();
+        String md5Password = md5.getMD5ofStr(password);
         ABaseUser baseUser = baseUserDao.login(login, md5Password);
         if (baseUser == null) {
             logger.error("account or email error");

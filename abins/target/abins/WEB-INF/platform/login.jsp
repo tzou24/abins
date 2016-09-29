@@ -12,7 +12,8 @@
 		  padding-top: 40px;
 		  padding-bottom: 40px;
 		  background-color: #eee;
-		  background-image: ()
+		  background-image: url('../resource/theme/image/toLogin.jpg');
+		  background-size:auto;
 		}
 		
 		.form-signin {
@@ -62,8 +63,8 @@
 	<div class="container">
       <form class="form-signin" role="form" action="${ctx}/platform/main/login" method="post">
         <h2 class="form-signin-heading">欢迎登录abins </h2>
-        <input type="email" class="form-control" placeholder="邮箱地址" required autofocus>
-        <input type="password" class="form-control" placeholder="密码" required>
+        <input type="email" class="form-control" placeholder="邮箱地址" required autofocus value="admin@163.com" name="email">
+        <input type="password" class="form-control" placeholder="密码" required value="123456" name="password">
         <input type="hidden" name="tokenId" value="${tokenId}"/>
         <div class="checkbox">
           <label>

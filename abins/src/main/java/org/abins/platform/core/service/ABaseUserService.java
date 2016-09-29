@@ -21,7 +21,7 @@ public interface ABaseUserService {
      * @throws AUserLoginException
      */
     ABaseUser login(String login, String password)
-        throws AUserLoginException;
+        throws AUserLoginException, Exception;
     
     /**
      * <一句话功能简述> 用户注册
