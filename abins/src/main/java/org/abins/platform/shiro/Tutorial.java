@@ -14,6 +14,12 @@ import org.apache.shiro.util.Factory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * 功能描述：shiro 安全框架基础功能测试类
+ * 
+ * @author  : yaobin 2016-10-9
+ * @modify  : yaobin 2016-10-9 <描述修改内容>
+ */
 public class Tutorial {
     
     private static final transient Logger log = LoggerFactory.getLogger(Tutorial.class);

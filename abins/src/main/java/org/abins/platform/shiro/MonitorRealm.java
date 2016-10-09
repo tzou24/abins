@@ -19,6 +19,12 @@ import org.apache.shiro.subject.SimplePrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * 功能描述：shiro 安全框架授权类
+ * 
+ * @author  : yaobin 2016-10-9
+ * @modify  : yaobin 2016-10-9 <描述修改内容>
+ */
 @Service("monitorRealm")
 public class MonitorRealm extends AuthorizingRealm {
     
@@ -29,8 +35,13 @@ public class MonitorRealm extends AuthorizingRealm {
      * @Autowired LoginLogService loginLogService;
      */
     // 盐值 混淆密码
-    private final String slat = "341g354grtDSAasd#W$T^GVBGZRFD125";
+    //private final String slat = "341g354grtDSAasd#W$T^GVBGZRFD125";
     
+    /**
+     * baseUserService 注入业务层 对DAO操作
+     * <p>提示：</p>
+     * 在web.xml 中需要将扫描service注解排在shiro.xml文件之前，才能成功注入
+     */
     @Autowired
     private ABaseUserService baseUserService;
     
@@ -39,11 +50,16 @@ public class MonitorRealm extends AuthorizingRealm {
     }
     
     /**
+     * 重载方法
      * 授权查询回调函数, 进行鉴权但缓存中无用户的授权信息时调用.
+     * @param principals
+     * @return
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        /* 这里编写授权代码 */
+        /* 这里编写授权代码 
+         * 当前仅用于测试
+         * */
         Set<String> roleNames = new HashSet<String>();
         roleNames.add("admin");
         
@@ -58,12 +74,14 @@ public class MonitorRealm extends AuthorizingRealm {
     }
     
     /**
-     * 登录时调用
+     * 重载方法 登录时调用 后台验证处理
+     * @param authcToken
+     * @return
+     * @throws AuthenticationException
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken)
         throws AuthenticationException {
-        /* 这里编写认证代码 */
         UsernamePasswordToken token = (UsernamePasswordToken)authcToken;
         ABaseUser baseUser = null;
         try {
