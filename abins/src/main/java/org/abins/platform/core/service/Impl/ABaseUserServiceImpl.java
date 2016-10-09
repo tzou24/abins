@@ -1,4 +1,4 @@
-package org.abins.platform.core.service.Impl;
+package org.abins.platform.core.service.impl;
 
 import org.abins.platform.core.dao.ABaseUserDao;
 import org.abins.platform.core.entity.ABaseUser;
@@ -27,13 +27,10 @@ public class ABaseUserServiceImpl implements ABaseUserService {
     @Override
     public ABaseUser login(String login, String password)
         throws AUserLoginException, Exception {
-        logger.info("loginParams={}", login, password);
-        MD5Util md5 = new MD5Util();
-        String md5Password = md5.getMD5ofStr(password);
-        ABaseUser baseUser = baseUserDao.login(login, md5Password);
+        ABaseUser baseUser = baseUserDao.login(login, password);
         if (baseUser == null) {
-            logger.error("account or email error");
-            throw new AUserLoginException("account or email error");
+            logger.error("账号或密码错误");
+            throw new AUserLoginException("账号或密码错误");
         } else {
             return baseUser;
         }
@@ -47,4 +44,7 @@ public class ABaseUserServiceImpl implements ABaseUserService {
         return result;
     }
     
+    public static void main(String[] args) {
+        System.out.println(MD5Util.encryptMD5("123456"));
+    }
 }

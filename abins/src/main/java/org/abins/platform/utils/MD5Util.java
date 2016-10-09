@@ -1,5 +1,7 @@
 package org.abins.platform.utils;
 
+import org.apache.shiro.crypto.hash.Md5Hash;
+
 /**
  * 功能描述：MD5加密工具类
  * 
@@ -289,6 +291,21 @@ public class MD5Util {
         return s;
     }
     
+    /**
+     * <一句话功能简述> shrio md5hash加密
+     * 
+     * @modefy : yaobin 2016-10-9
+     * @param source
+     * @return 
+     */
+    public static final String encryptMD5(String source) {
+        if (source == null) {
+            source = "";
+        }
+        Md5Hash md5 = new Md5Hash(source);
+        return md5.toString();
+    }
+    
     public static MD5Util getInstance() {
         md5 = new MD5Util();
         return md5;
@@ -298,4 +315,5 @@ public class MD5Util {
         String md5Str = MD5Util.getInstance().getMD5ofStr("123456");
         System.out.println("md5Str: " + md5Str);
     }
+    
 }
