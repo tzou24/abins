@@ -5,7 +5,7 @@ import java.util.Set;
 
 import org.abins.platform.core.entity.ABaseUser;
 import org.abins.platform.core.exception.AUserLoginException;
-import org.abins.platform.core.service.ABaseUserService;
+import org.abins.platform.core.service.IABaseUserService;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -43,7 +43,7 @@ public class MonitorRealm extends AuthorizingRealm {
      * 在web.xml 中需要将扫描service注解排在shiro.xml文件之前，才能成功注入
      */
     @Autowired
-    private ABaseUserService baseUserService;
+    private IABaseUserService baseUserService;
     
     public MonitorRealm() {
         super();

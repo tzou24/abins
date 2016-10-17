@@ -6,6 +6,7 @@ package org.abins.platform.core.exception;
  * @author  : yaobin 2016-9-28
  * @modify  : yaobin 2016-9-28 <描述修改内容>
  */
+@SuppressWarnings("serial")
 public class AUserLoginException extends RuntimeException{
 
     public AUserLoginException(String message, Throwable cause) {

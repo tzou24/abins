@@ -12,7 +12,7 @@ import org.apache.ibatis.annotations.Param;
  * @author : yaobin 2016-9-28
  * @modify : yaobin 2016-9-28 <描述修改内容>
  */
-public interface ABaseUserDao {
+public interface IABaseUserDao {
     
     /**
      * <一句话功能简述> 注册新用户

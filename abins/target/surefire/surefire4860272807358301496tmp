@@ -1,7 +1,12 @@
 #surefire
-#Sun Oct 09 10:26:56 CST 2016
+#Mon Oct 17 16:34:13 CST 2016
 enableAssertions=true
 testSuiteDefinitionTestSourceDirectory=E\:\\\u9879\u76EE\u5F00\u53D1\u6587\u6863\\abins\\abins\\abins\\src\\test\\java
+classPathUrl.39=F\:\\Maven\\repository\\com\\dyuproject\\protostuff\\protostuff-runtime\\1.0.8\\protostuff-runtime-1.0.8.jar
+classPathUrl.38=F\:\\Maven\\repository\\com\\dyuproject\\protostuff\\protostuff-api\\1.0.8\\protostuff-api-1.0.8.jar
+classPathUrl.37=F\:\\Maven\\repository\\com\\dyuproject\\protostuff\\protostuff-core\\1.0.8\\protostuff-core-1.0.8.jar
+classPathUrl.36=F\:\\Maven\\repository\\org\\apache\\shiro\\shiro-web\\1.3.2\\shiro-web-1.3.2.jar
+classPathUrl.35=F\:\\Maven\\repository\\org\\apache\\shiro\\shiro-spring\\1.3.2\\shiro-spring-1.3.2.jar
 classPathUrl.34=F\:\\Maven\\repository\\commons-beanutils\\commons-beanutils\\1.8.3\\commons-beanutils-1.8.3.jar
 classPathUrl.33=F\:\\Maven\\repository\\org\\apache\\shiro\\shiro-core\\1.3.2\\shiro-core-1.3.2.jar
 classPathUrl.32=F\:\\Maven\\repository\\org\\apache\\commons\\commons-lang3\\3.4\\commons-lang3-3.4.jar
@@ -54,3 +59,4 @@ providerConfiguration=org.apache.maven.surefire.junit4.JUnit4Provider
 classPathUrl.11=F\:\\Maven\\repository\\jstl\\jstl\\1.2\\jstl-1.2.jar
 classPathUrl.10=F\:\\Maven\\repository\\taglibs\\standard\\1.1.2\\standard-1.1.2.jar
 useSystemClassLoader=true
+classPathUrl.40=F\:\\Maven\\repository\\com\\dyuproject\\protostuff\\protostuff-collectionschema\\1.0.8\\protostuff-collectionschema-1.0.8.jar

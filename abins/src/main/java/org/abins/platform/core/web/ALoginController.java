@@ -1,8 +1,13 @@
 package org.abins.platform.core.web;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.abins.platform.core.dao.IAPermissionDao;
+import org.abins.platform.core.entity.APermission;
+import org.abins.platform.core.service.IAPermissionService;
 import org.abins.platform.utils.MD5Util;
 import org.abins.platform.utils.StringUtil;
 import org.apache.shiro.SecurityUtils;
@@ -12,6 +17,7 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -37,6 +43,9 @@ public class ALoginController {
     public static final String LOGIN_TOKEN_ID = "tokenId";
     
     public static final String FAIL_STR = "fail";
+    
+    @Autowired
+    private IAPermissionService permissionService;
     
     /**
      * <一句话功能简述> 进入登录页面
@@ -101,7 +110,7 @@ public class ALoginController {
             token.setRememberMe(true);
             try {
                 currentUser.login(token);
-                logger.debug("用户：[" + token.getUsername()+ "]登录成功");
+                logger.info("用户：[" + token.getUsername() + "]登录成功");
                 model.addAttribute("currentUsername", currentUser.getPrincipal());
             } catch (UnknownAccountException uae) {
                 attr.addFlashAttribute(FAIL_STR, "账号或密码不正确");
@@ -114,6 +123,8 @@ public class ALoginController {
                 attr.addFlashAttribute(FAIL_STR, "系统异常，请重试");
                 return "redirect:/platform/main/toLogin";
             }
+            APermission permission = permissionService.findById("4028b29557ad1da40157ad1da45d0000");
+            logger.info("permission={}", permission);
             return "platform/home";
         }
     }

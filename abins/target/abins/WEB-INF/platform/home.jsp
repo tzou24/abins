@@ -11,15 +11,17 @@
 			<script type="text/javascript">
 				try{ace.settings.check('navbar' , 'fixed')}catch(e){}
 			</script>
+
 			<div class="navbar-container" id="navbar-container">
 				<div class="navbar-header pull-left">
 					<a href="#" class="navbar-brand">
 						<small>
 							<i class="icon-leaf"></i>
-							abins后台管理系统${currentUsername }
+							ABINS后台管理系统
 						</small>
 					</a><!-- /.brand -->
 				</div><!-- /.navbar-header -->
+
 				<div class="navbar-header pull-right" role="navigation">
 					<ul class="nav ace-nav">
 						<li class="grey">
@@ -27,11 +29,13 @@
 								<i class="icon-tasks"></i>
 								<span class="badge badge-grey">4</span>
 							</a>
+
 							<ul class="pull-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
 								<li class="dropdown-header">
 									<i class="icon-ok"></i>
 									还有4个任务完成
 								</li>
+
 								<li>
 									<a href="#">
 										<div class="clearfix">
@@ -44,17 +48,20 @@
 										</div>
 									</a>
 								</li>
+
 								<li>
 									<a href="#">
 										<div class="clearfix">
 											<span class="pull-left">硬件更新</span>
 											<span class="pull-right">35%</span>
 										</div>
+
 										<div class="progress progress-mini ">
 											<div style="width:35%" class="progress-bar progress-bar-danger"></div>
 										</div>
 									</a>
 								</li>
+
 								<li>
 									<a href="#">
 										<div class="clearfix">
@@ -128,7 +135,7 @@
 												<i class="btn btn-xs no-hover btn-success icon-shopping-cart"></i>
 												新订单
 											</span>
-											<span class="pull-right badge badge-success">-8</span>
+											<span class="pull-right badge badge-success">+8</span>
 										</div>
 									</a>
 								</li>
@@ -231,7 +238,7 @@
 								<img class="nav-user-photo" src="${ctx}/resource/theme/ace/assets/avatars/user.jpg" alt="Jason's Photo" />
 								<span class="user-info">
 									<small>欢迎光临,</small>
-									${ userName}
+									${currentUsername}
 								</span>
 
 								<i class="icon-caret-down"></i>
@@ -255,7 +262,7 @@
 								<li class="divider"></li>
 
 								<li>
-									<a href="#">
+									<a href="./logout">
 										<i class="icon-off"></i>
 										退出
 									</a>
@@ -316,7 +323,7 @@
 						<li class="active">
 							<a href="index.html">
 								<i class="icon-dashboard"></i>
-								<span class="menu-text"> 控制台 </span>
+								<span class="menu-text"> 主页 </span>
 							</a>
 						</li>
 
@@ -668,10 +675,10 @@
 
 									欢迎使用
 									<strong class="green">
-										Ace后台管理系统
+										ABINS 后台管理系统
 										<small>(v1.2)</small>
 									</strong>
-									,轻量级好用的后台管理系统模版.	
+								
 								</div>
 
 								<div class="row">
@@ -1781,7 +1788,6 @@
 										</div><!-- /widget-box -->
 									</div><!-- /span -->
 								</div><!-- /row -->
-
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
 						</div><!-- /.row -->
@@ -1805,7 +1811,6 @@
 							</div>
 							<span>&nbsp; 选择皮肤</span>
 						</div>
-
 						<div>
 							<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-navbar" />
 							<label class="lbl" for="ace-settings-navbar"> 固定导航条</label>
@@ -1836,6 +1841,7 @@
 					</div>
 				</div><!-- /#ace-settings-container -->
 			</div><!-- /.main-container-inner -->
+
 			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
 				<i class="icon-double-angle-up icon-only bigger-110"></i>
 			</a>
@@ -1863,6 +1869,9 @@
 					var barColor = !$box.hasClass('infobox-dark') ? $box.css('color') : '#FFF';
 					$(this).sparkline('html', {tagValuesAttribute:'data-values', type: 'bar', barColor: barColor , chartRangeMin:$(this).data('min') || 0} );
 				});
+			
+			
+			
 			
 			  var placeholder = $('#piechart-placeholder').css({'width':'90%' , 'min-height':'150px'});
 			  var data = [
@@ -1910,6 +1919,8 @@
 			 placeholder.data('chart', data);
 			 placeholder.data('draw', drawPieChart);
 			
+			
+			
 			  var $tooltip = $("<div class='tooltip top in'><div class='tooltip-inner'></div></div>").hide().appendTo('body');
 			  var previousPoint = null;
 			
@@ -1927,6 +1938,11 @@
 				}
 				
 			 });
+			
+			
+			
+			
+			
 			
 				var d1 = [];
 				for (var i = 0; i < Math.PI * 2; i += 0.5) {
@@ -1972,6 +1988,7 @@
 					}
 				});
 			
+			
 				$('#recent-box [data-rel="tooltip"]').tooltip({placement: tooltip_placement});
 				function tooltip_placement(context, source) {
 					var $source = $(source);
@@ -1985,9 +2002,12 @@
 					if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
 					return 'left';
 				}
+			
+			
 				$('.dialogs,.comments').slimScroll({
 					height: '300px'
 			    });
+				
 				
 				//Android's default browser somehow is confused when tapping on label which will lead to dragging the task
 				//so disable dragging when clicking on label
@@ -2017,11 +2037,13 @@
 					if(this.checked) $(this).closest('li').addClass('selected');
 					else $(this).closest('li').removeClass('selected');
 				});
+				
+			
 			})
 		</script>
 <script type="text/javascript">
-//var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-//document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fe9e1d61340ff3d9495a8cca04ebdb49d' type='text/javascript'%3E%3C/script%3E"));
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fe9e1d61340ff3d9495a8cca04ebdb49d' type='text/javascript'%3E%3C/script%3E"));
 </script>
 </body>
 </html>

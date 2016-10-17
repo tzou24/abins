@@ -323,7 +323,7 @@
 						<li class="active">
 							<a href="index.html">
 								<i class="icon-dashboard"></i>
-								<span class="menu-text"> 控制台 </span>
+								<span class="menu-text"> 主页 </span>
 							</a>
 						</li>
 

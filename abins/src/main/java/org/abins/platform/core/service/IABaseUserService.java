@@ -4,12 +4,12 @@ import org.abins.platform.core.entity.ABaseUser;
 import org.abins.platform.core.exception.AUserLoginException;
 
 /**
- * 功能描述：基础用户服务层
+ * 功能描述：基础用户业务层接口
  * 
  * @author : yaobin 2016-9-28
  * @modify : yaobin 2016-9-28 <描述修改内容>
  */
-public interface ABaseUserService {
+public interface IABaseUserService extends IBaseService<ABaseUser> {
     
     /**
      * <一句话功能简述> 用户登录
@@ -30,5 +30,5 @@ public interface ABaseUserService {
      * @param baseUser 用户对象
      * @return true-成功；false-失败
      */
-    boolean register(ABaseUser baseUser);
+    boolean regUser(ABaseUser baseUser);
 }

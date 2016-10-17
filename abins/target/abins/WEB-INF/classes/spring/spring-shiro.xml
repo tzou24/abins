@@ -7,13 +7,16 @@
     http://www.springframework.org/schema/util/spring-util-3.0.xsd">  
     
     <description>Shiro 配置</description>  
+    <!-- 对应于web.xml中配置的那个shiroFilter -->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">  
+    	<!-- Shiro的核心安全接口，这个属性是必须的 -->
         <property name="securityManager" ref="securityManager" />  
+        <!-- 要求登录时的链接(登录页面地址)，非必须的属性，默认会自动寻找Web工程根目录下的"/login.jsp"页面 -->
         <property name="loginUrl" value="/platform/main/toLogin" />  
+        <!-- 登录成功后要跳转的连接(本例中此属性用不到，因为登录成功后的处理逻辑在LoginController里硬编码) -->
         <property name="successUrl" value="/platform/main/home" />  
-        <!-- shiro会自动调currentUser.isAuthenticated()这个方法，没有登录的将被返回 
-		<property name="unauthorizedUrl" value="/error/noperms.jsp" />-->
-		
+        <!-- shiro会自动调currentUser.isAuthenticated()这个方法，没有登录的将被返回  -->
+        <!-- 用户访问未对其授权的资源时，所显示的连接 -->
         <property name="unauthorizedUrl" value="/error/noperms.jsp" />  
         <property name="filterChainDefinitions">  
             <!--Anon：不指定过滤器,不错是这个过滤器是空的，什么都没做，跟没有一样。 
@@ -29,11 +32,19 @@
         </property>  
     </bean>  
   
+    <!-- Shiro安全管理器 -->
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">  
         <!--设置自定义realm -->  
         <property name="realm" ref="monitorRealm" />  
+        <property name="cacheManager" ref="shiroCacheManager"></property> 
     </bean>  
-  
+  	
+  	<!-- Shiro安全管理器 
+  	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager"> 
+	  	<property name="realm" ref="jdbcRealm"></property> 
+	  	<property name="cacheManager" ref="shiroCacheManager"></property> 
+  	</bean>--> 
+  	
     <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />  
   
     <!--自定义Realm 继承自AuthorizingRealm -->  
@@ -57,5 +68,18 @@
         <property name="securityManager" ref="securityManager" />  
   
     </bean>  
-  
+    
+  <!-- 数据库保存的密码是使用MD5算法加密的，所以这里需要配置一个密码匹配对象 
+  <bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.Md5CredentialsMatcher"></bean>-->  
+  <!-- 缓存管理  -->
+  <bean id="shiroCacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager"></bean> 
+  <!-- 使用Shiro自带的JdbcRealm类 指定密码匹配所需要用到的加密对象 指定存储用户、角色、权限许可的数据源及相关查询语句  TEST
+  <bean id="jdbcRealm" class="org.apache.shiro.realm.jdbc.JdbcRealm">
+	  <property name="credentialsMatcher" ref="credentialsMatcher"></property>
+	  <property name="permissionsLookupEnabled" value="true"></property> 
+	  <property name="dataSource" ref="dataSource"></property> 
+	  <property name="authenticationQuery" value="SELECT password FROM sec_user WHERE user_name = ?"></property> 
+	  <property name="userRolesQuery" value="SELECT role_name from sec_user_role left join sec_role using(role_id) left join sec_user using(user_id) WHERE user_name = ?"></property> 
+	  <property name="permissionsQuery" value="SELECT permission_name FROM sec_role_permission left join sec_role using(role_id) left join sec_permission using(permission_id) WHERE role_name = ?"></property> 
+  </bean>--> 
 </beans> 
