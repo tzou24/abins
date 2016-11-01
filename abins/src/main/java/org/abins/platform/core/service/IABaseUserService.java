@@ -20,7 +20,7 @@ public interface IABaseUserService extends IBaseService<ABaseUser> {
      * @return 该用户对象
      * @throws AUserLoginException
      */
-    ABaseUser login(String login, String password)
+    public ABaseUser login(String login, String password)
         throws AUserLoginException, Exception;
     
     /**
@@ -30,5 +30,5 @@ public interface IABaseUserService extends IBaseService<ABaseUser> {
      * @param baseUser 用户对象
      * @return true-成功；false-失败
      */
-    boolean regUser(ABaseUser baseUser);
+    public boolean regUser(ABaseUser baseUser);
 }

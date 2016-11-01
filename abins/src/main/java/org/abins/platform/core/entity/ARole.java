@@ -7,6 +7,7 @@ import java.util.Date;
  * 
  * @author : yaobin 2016-10-10
  * @modify : yaobin 2016-10-10 <描述修改内容>
+ * @table ： a_role
  */
 public class ARole {
     

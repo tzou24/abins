@@ -65,7 +65,7 @@ CREATE TABLE a_permission(
 	parent_id varchar(36) NOT NULL comment '父级主键',
 	header_html varchar(500) NOT NULL comment '导航头标签',
 	PRIMARY KEY(permission_id)
-)ENGINE=InnoDB default CHARSET=utf8 comment='资源权限表'
+)ENGINE=InnoDB default CHARSET=utf8 comment='资源权限表';
 
 INSERT INTO a_permission values('4028b29557ad1da40157ad1da45d0000', '主页', '/platform/main/home', 10, '4028b29557ad1da40157ad1da45d0000', '<p>主页</p>');
 
@@ -78,7 +78,7 @@ CREATE TABLE a_role_permission(
 	permission_id varchar(36) NOT NULL comment '资源权限主键',
 	role_id varchar(36) NOT NULL comment '角色主键',
 	PRIMARY KEY(role_permission_id)
-)ENGINE=InnoDB default CHARSET=utf8 comment='资源权限与角色关系表'
+)ENGINE=InnoDB default CHARSET=utf8 comment='资源权限与角色关系表';
 
 INSERT INTO a_role_permission values('4028b29557ad25300157ad2530420000', '4028b29557ad1da40157ad1da45d0000', '4028b29557ac779a0157ac779a9a0000');
 
@@ -106,3 +106,25 @@ CREATE TABLE a_user_org(
 	PRIMARY KEY(user_org_id)
 )ENGINE=InnoDB default CHARSET=utf8 comment='组织用户关联表';
 
+/**
+ * 系统字典表 
+ */
+DROP TABLE IF EXISTS a_dict;
+CREATE TABLE a_dict(
+	dict_id varchar(36) NOT NULL comment '字典主键',
+	dict_type varchar(50) NOT NULL comment '字典类别',
+	code varchar(50) NOT NULL comment '字典编码', 
+	PRIMARY KEY(dict_id)
+)ENGINE=InnoDB default CHARSET=utf8 comment='字典表';
+
+/**
+ * 字典数据表
+ */
+DROP TABLE IF EXISTS a_dict_type;
+CREATE TABLE a_dict_type(
+	dict_type_id varchar(36) NOT NULL comment '字典数据主键',
+	type_name varchar(100) NOT NULL comment '字典名称',
+	type_value varchar(100) NOT NULL comment '字典值',
+	dict_id varchar(36) NOT NULL comment '字典表ID',
+	PRIMARY KEY(dict_type_id)
+)ENGINE=InnoDB default CHARSET=utf8 comment='字典数据表';

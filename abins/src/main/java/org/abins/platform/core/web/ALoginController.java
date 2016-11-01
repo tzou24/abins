@@ -6,7 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.abins.platform.core.dao.IAPermissionDao;
+import org.abins.platform.core.entity.ADictType;
 import org.abins.platform.core.entity.APermission;
+import org.abins.platform.core.service.IADictService;
 import org.abins.platform.core.service.IAPermissionService;
 import org.abins.platform.utils.MD5Util;
 import org.abins.platform.utils.StringUtil;
@@ -46,6 +48,8 @@ public class ALoginController {
     
     @Autowired
     private IAPermissionService permissionService;
+    @Autowired
+    private IADictService dictService;
     
     /**
      * <一句话功能简述> 进入登录页面
@@ -123,8 +127,11 @@ public class ALoginController {
                 attr.addFlashAttribute(FAIL_STR, "系统异常，请重试");
                 return "redirect:/platform/main/toLogin";
             }
-            APermission permission = permissionService.findById("4028b29557ad1da40157ad1da45d0000");
-            logger.info("permission={}", permission);
+            
+//            APermission permission = permissionService.findById("4028b29557ad1da40157ad1da45d0000");
+//            logger.info("permission={}", permission);
+            List<ADictType> dictList = dictService.getAllType("cs");
+            System.out.println(dictList);
             return "platform/home";
         }
     }
